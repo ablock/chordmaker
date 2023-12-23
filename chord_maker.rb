@@ -56,6 +56,13 @@ class ChordMaker < Thor
     puts "#{key_name} (#{roman_numbers[chord_number - 1]}): #{notes[0]} #{chord_type_from_intervals(notes)}: #{notes.join(' ')}"
   end
 
+  desc "chords_in_key KEY_NAME", "print all chords for a given key"
+  def chords_in_key(key_name)
+    (1..7).each do |chord_number|
+      notes_in_chord(key_name, chord_number)
+    end
+  end
+
   desc "major_keys", "print notes for all major keys"
   def major_keys
     SEMITONES.each do |key|
