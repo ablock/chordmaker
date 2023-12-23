@@ -35,8 +35,8 @@ MAJOR_CHORD_ROMAN_NUMBERS = ['I', 'ii', 'iii', 'IV', 'V', 'vi', 'vii']
 MINOR_CHORD_ROMAN_NUMBERS = ['i', 'ii', 'III', 'iv', 'v', 'VI', 'VII']
 
 class ChordMaker < Thor
-  desc "notes_for_key KEY_NAME", "print the notes for the given key"
-  def notes_for_key(key_name)
+  desc "notes_in_key KEY_NAME", "print the notes for the given key"
+  def notes_in_key(key_name)
     puts key_notes(key_name).join(' ')
   end
 
