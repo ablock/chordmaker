@@ -136,6 +136,10 @@ class ChordMaker < Thor
     note.match(/([a-gA-G])b/)
   end
 
+  def is_sharp(note)
+    note.match(/([a-gA-G])\#/)
+  end
+
   def flatten(note)
     adjust(note, -1)
   end
@@ -198,6 +202,13 @@ class ChordMaker < Thor
   end
 
   def note_number_from_name(name)
+    if match = is_sharp(name)
+      base_note = match[1]
+      index = SEMITONES.index(base_note) + 1
+      base_note_index = index == 12 ? 0 : index
+      name = SEMITONES[base_note_index]
+    end
+
     index = SEMITONES.index(name)
     raise "No note with name #{name}" if index.nil?
     index
